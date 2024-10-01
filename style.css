@@ -1,66 +1,124 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-body {
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    overflow: hidden; /* Prevent scrolling while the login popup is active */
+}
+
+/* Login Popup */
+#login-popup {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-  
-}
-.container {
+    background-image: url('background pic.jpg'); /* Background image */
+    background-size: cover; /* Ensure the image covers the form */
+    background-position: center; /* Center the image */
     position: relative;
-    width: 100%;
-    height: 100vh; /* Make the container take the full height of the viewport */
-    min-width: 100vw;
-    background: url('background pic.jpg') no-repeat center center; /* Background image */
-    background-size: cover; /* Ensure the background covers the entire container */
-    background-attachment: fixed;
 }
-.form-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-30%, -50%); 
+
+.login-form {
+    background:rgb(136, 183, 204);
     padding: 20px;
-    background: rgb(136, 183, 204);
-    border-radius: 20px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    gap: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
 }
-h2 {
+
+.login-form h2 {
+    margin-bottom: 20px;
     text-align: center;
 }
 
-label{
-    display: block;
-    margin-bottom:10px ;
-    font-weight: bold;
-    color: #333;
-}
-input{
+.login-form input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    background-color: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-button{
+
+.login-form button {
     width: 100%;
-    padding: 12px;
-    background-color: rgb(142, 193, 216);
+    padding: 10px;
+    background-color: rgb(136, 183, 204);
     color: black;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #1d6cc0;
+}
+
+/* Main Content */
+.container {
+    display: none; /* Hidden until login is completed */
+    height: 100vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Note Section */
+.note-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.note-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.note-section input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.priority-options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.priority-options label {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+.priority-options input {
+    margin-bottom: 10px;
+}
+
+.note-section button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.note-section button:hover {
+    background-color: #1976d2;
 }
 
