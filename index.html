@@ -23,36 +23,41 @@
     <div class="container">
         <!-- Note Section -->
         <div class="note-section">
-            <h2>Create a Note</h2>
-            <form id="note-form">
-                <input type="text" id="note-text" placeholder="Enter note text" required>
-                
-                <label>Priority</label>
-                <div class="priority-options">
-                    <input type="radio" id="very-low" name="priority" value="Very Low" required>
-                    <label for="very-low">Very Low</label>
-
-                    <input type="radio" id="low" name="priority" value="Low">
-                    <label for="low">Low</label>
-
-                    <input type="radio" id="medium" name="priority" value="Medium">
-                    <label for="medium">Medium</label>
-
-                    <input type="radio" id="high" name="priority" value="High">
-                    <label for="high">High</label>
-                </div>
-
-                <label for="category">Category</label>
-                <select id="category" name="category" required>
-                    <option value="">Select Category</option>
-                    <option value="red">Red</option>
-                    <option value="white">White</option>
-                    <option value="green">Green</option>
-                </select>
-
-                <button type="submit">Create Note</button>
-            </form>
-        </div>
+            <input type="text" id="Enter Note" placeholder="Enter Note" required>
+          
+            <div class="priority-container">
+              <label>Priority:</label>
+              <div class="priority-options">
+                <label for="very-low">Very Low</label>
+                <input type="radio" id="very-low" name="priority" value="very-low">
+          
+                <label for="low">Low</label>
+                <input type="radio" id="low" name="priority" value="low">
+          
+                <label for="medium">Medium</label>
+                <input type="radio" id="medium" name="priority" value="medium">
+          
+                <label for="high">High</label>
+                <input type="radio" id="high" name="priority" value="high">
+          
+                <label for="very-high">Very High</label>
+                <input type="radio" id="very-high" name="priority" value="very-high">
+              </div>
+            </div>
+          
+            <div class="category">
+              <label for="category">Category:</label>
+              <select id="category">
+                <option value="" disabled selected>Select Category</option>
+                <option value="work">Photography</option>
+                <option value="personal">Personal</option>
+                <option value="traveler">Traveler</option>
+              </select>
+            </div>
+          
+            <button>Create Note</button>
+          </div>
+          
     </div>
 
     <script>

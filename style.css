@@ -22,7 +22,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('background pic.jpg'); /* Background image */
+    background-image: url('backgroundpic.jpg'); /* Background image */
     background-size: cover; /* Ensure the image covers the form */
     background-position: center; /* Center the image */
     position: relative;
@@ -69,56 +69,79 @@ body, html {
     height: 100vh;
     align-items: center;
     justify-content: space-evenly;
+    background-image: url(backgroundnote.jpg);
 }
 
 /* Note Section */
+/* Container for the note section */
 .note-section {
-    background: #fff;
+    background-color:rgba(232,216,199,255);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-.note-section h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.note-section input, select {
+/* Text area for the note */
+.note-section input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 20px;
+     border: 1px solid #ccc; 
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(225,204,180);
+}
+
+/* Priority section */
+.priority-container {
+    margin-bottom: 30px;
+    margin-top: 15px;
+    width: 100%;
 }
 
 .priority-options {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+    gap: 10px; /* Space between each label and radio button */
+    align-items: center; /* Vertically align the label text and radio button */
+    flex-wrap: wrap; 
 }
 
 .priority-options label {
-    margin-left: 5px;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Vertically align the label text and radio button */
 }
 
-.priority-options input {
-    margin-bottom: 10px;
+.priority-options input[type="radio"] {
+    margin-right: 10px; /* Space between the radio button and its label */
 }
 
-.note-section button {
+
+/* Category section */
+.category {
+    margin-bottom: 20px;  
+}
+.category select {
     width: 100%;
     padding: 10px;
-    background-color: #2196f3;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgb(225,204,180);
+}
+
+/* Button styling */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(108,17,4,255);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.note-section button:hover {
-    background-color: #1976d2;
+button:hover {
+    background-color: rgba(187,176,148,255);
 }
+
 
