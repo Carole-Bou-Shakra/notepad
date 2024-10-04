@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login & Note Page</title>
+    <title>Note Pad</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,28 +20,33 @@
     </div>
 
     <!-- Main Content Section -->
-    <div class="container">
+    <div class="container" style="display: none;">
+        <div class="notes-display" id="notesDisplay" style="display: none;">
+            <!-- Existing notes will appear here -->
+        </div>
+        
         <!-- Note Section -->
         <div class="note-section">
-            <input type="text" id="Enter Note" placeholder="Enter Note" required>
+            <button id="closeBtn">Close</button>
+            <input type="text" id="noteText" placeholder="Enter Note" required>
           
             <div class="priority-container">
               <label>Priority:</label>
               <div class="priority-options">
                 <label for="very-low">Very Low</label>
-                <input type="radio" id="very-low" name="priority" value="very-low">
+                <input type="radio" id="very-low" name="priority" value="Very Low">
           
                 <label for="low">Low</label>
-                <input type="radio" id="low" name="priority" value="low">
+                <input type="radio" id="low" name="priority" value="Low">
           
                 <label for="medium">Medium</label>
-                <input type="radio" id="medium" name="priority" value="medium">
+                <input type="radio" id="medium" name="priority" value="Medium">
           
                 <label for="high">High</label>
-                <input type="radio" id="high" name="priority" value="high">
+                <input type="radio" id="high" name="priority" value="High">
           
                 <label for="very-high">Very High</label>
-                <input type="radio" id="very-high" name="priority" value="very-high">
+                <input type="radio" id="very-high" name="priority" value="Very High">
               </div>
             </div>
           
@@ -49,47 +54,109 @@
               <label for="category">Category:</label>
               <select id="category">
                 <option value="" disabled selected>Select Category</option>
-                <option value="work">Photography</option>
+                <option value="photography">Photography</option>
                 <option value="personal">Personal</option>
                 <option value="traveler">Traveler</option>
               </select>
             </div>
           
-            <button>Create Note</button>
-          </div>
-          
+            <button id="createNoteBtn">Create Note</button>
+        </div>
     </div>
 
     <script>
-     document.getElementById('login-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+        // Login form handler
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-    // Validate login (can add proper validation here if needed)
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
 
-    if (username && password) {
-        // Remove login popup
-        const loginPopup = document.getElementById('login-popup');
-        loginPopup.remove();
+            if (username && password) {
+                const loginPopup = document.getElementById('login-popup');
+                loginPopup.style.display = 'none'; // Hide login popup
 
-        // Show the main content
-        document.querySelector('.container').style.display = 'flex';
-        document.body.style.overflow = 'auto'; // Enable scrolling if content overflows
-    } else {
-        alert("Please enter valid credentials.");
-    }
-});
+                document.querySelector('.container').style.display = 'flex'; // Show notes section
+                document.body.style.overflow = 'auto'; // Enable scrolling
+            } else {
+                alert("Please enter valid credentials.");
+            }
+        });
 
-document.getElementById('note-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const noteText = document.getElementById('note-text').value;
-    const priority = document.querySelector('input[name="priority"]:checked').value;
-    const category = document.getElementById('category').value;
+        // Note creation handler
+        document.getElementById("createNoteBtn").addEventListener("click", function() {
+            // Get the text input value
+            var noteText = document.getElementById("noteText").value;
 
-    alert(`Note Created!\nText: ${noteText}\nPriority: ${priority}\nCategory: ${category}`);
-});
+            // Get the selected priority
+            var priorityElements = document.getElementsByName("priority");
+            var selectedPriority;
+            for (var i = 0; i < priorityElements.length; i++) {
+                if (priorityElements[i].checked) {
+                    selectedPriority = priorityElements[i].value;
+                    break;
+                }
+            }
 
+            // Get the selected category
+            var categorySelect = document.getElementById("category");
+            var selectedCategory = categorySelect.options[categorySelect.selectedIndex].text;
+
+            // Validate that all fields are filled
+            if (!noteText || !selectedPriority || !categorySelect.value) {
+                alert("Please fill in all fields before creating a note.");
+                return;
+            }
+
+            // Show the notes display section only when a note is created
+            document.querySelector('.notes-display').style.display = 'flex'; // Show notes display
+
+            // Create a new div for the note
+            var noteItem = document.createElement("div");
+            noteItem.className = "note-item";
+
+            // Add the note content
+            noteItem.innerHTML = `
+                <div class="note-content"><strong>Note:</strong> ${noteText}</div>
+                <div class="note-priority"><strong>Priority:</strong> ${selectedPriority}</div>
+                <div class="note-category"><strong>Category:</strong> ${selectedCategory}</div>
+            `;
+
+            // Append the note to the notes display section
+            document.getElementById("notesDisplay").prepend(noteItem); // Add new notes at the top
+
+            // Clear the form inputs after creating the note
+            document.getElementById("noteText").value = '';
+            for (var i = 0; i < priorityElements.length; i++) {
+                priorityElements[i].checked = false;
+            }
+            categorySelect.selectedIndex = 0;
+        });
+
+        // Close button handler
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            // Hide the note section
+            document.querySelector('.note-section').style.display = 'none'; // Hide note section
+
+            // Show the login popup again
+            const loginPopup = document.getElementById('login-popup');
+            loginPopup.style.display = 'flex'; // Show the popup
+
+            // Optional: Clear note text field
+            document.getElementById('noteText').value = '';
+            
+            // Optional: Deselect all priority radio buttons
+            const priorityElements = document.getElementsByName('priority');
+            for (let i = 0; i < priorityElements.length; i++) {
+                priorityElements[i].checked = false;
+            }
+
+            // Optional: Reset category selection
+            document.getElementById('category').selectedIndex = 0;
+
+            // Disable scrolling
+            document.body.style.overflow = 'hidden'; // Disable scrolling when the login popup is shown
+        });
     </script>
 </body>
 </html>

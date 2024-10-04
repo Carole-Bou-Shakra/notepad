@@ -13,7 +13,6 @@ body, html {
 
 /* Login Popup */
 #login-popup {
-    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100vw;
@@ -29,7 +28,8 @@ body, html {
 }
 
 .login-form {
-    background:rgb(136, 183, 204);
+   
+    background: rgb(136, 183, 204);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -40,6 +40,7 @@ body, html {
     margin-bottom: 20px;
     text-align: center;
 }
+
 
 .login-form input {
     width: 100%;
@@ -69,13 +70,19 @@ body, html {
     height: 100vh;
     align-items: center;
     justify-content: space-evenly;
-    background-image: url(backgroundnote.jpg);
+    background-image: url(backgroundnote.jpg); /* Background image for the notes section */
+}
+#closeBtn{
+    background-color:rgba(217,183,146,255);
+    color: black;
+}
+#closeBtn:hover {
+    background-color:rgba(207,182,155,255);
 }
 
 /* Note Section */
-/* Container for the note section */
 .note-section {
-    background-color:rgba(232,216,199,255);
+    background-color: rgba(232, 216, 199, 255);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -87,10 +94,10 @@ body, html {
 .note-section input {
     width: 100%;
     padding: 20px;
-     border: 1px solid #ccc; 
+    border: 1px solid #ccc; 
     border-radius: 10px;
     margin-bottom: 20px;
-    background-color: rgb(225,204,180);
+    background-color: rgb(225, 204, 180);
 }
 
 /* Priority section */
@@ -116,7 +123,6 @@ body, html {
     margin-right: 10px; /* Space between the radio button and its label */
 }
 
-
 /* Category section */
 .category {
     margin-bottom: 20px;  
@@ -126,14 +132,14 @@ body, html {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    background-color: rgb(225,204,180);
+    background-color: rgb(225, 204, 180);
 }
 
 /* Button styling */
 button {
     width: 100%;
     padding: 12px;
-    background-color: rgba(108,17,4,255);
+    background-color: rgba(108, 17, 4, 255);
     color: white;
     border: none;
     border-radius: 5px;
@@ -141,7 +147,42 @@ button {
 }
 
 button:hover {
-    background-color: rgba(187,176,148,255);
+    background-color: rgba(187, 176, 148, 255);
 }
 
+/* Notes Display */
+.notes-display {
+    background-color:rgba(217,183,146,255);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px;
+    width: 300px; /* Width for notes display */
+    margin-right: 20px; /* Space between notes display and note section */
+    display: flex;
+    flex-direction: column; /* Arrange items in a column */
+    gap: 15px; /* Space between notes */
+    overflow-y: auto; /* Allow scrolling for long lists */
+}
 
+.note-item {
+    background-color:rgba(191,110,89,255);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color:  black;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .notes-display {
+        margin: 20px; /* Reduce margin on smaller screens */
+    }
+
+    .note-section {
+        padding: 50px; /* Reduce padding on smaller screens */
+    }
+
+    .login-form {
+        width: 50%; /* Keep login form responsive */
+        
+    }
+}
